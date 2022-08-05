@@ -1,0 +1,12 @@
+We get some data related inflation risk. Data including Gasoline Inflation, 
+Food inflation, HealthCare Inflation, College Inflation, Airfare Inflation,
+Unemployment Rate and Federal Funds Effective Rate. We used 5 years of monthly data and put it in a cdv file. Below are our data references:
+
+https://www.usinflationcalculator.com/inflation/
+U.S. overall Inflation and energy, food & health care inflation
+
+https://data.bls.gov/timeseries/LNS14000000
+U.S. bureau of labor statistics
+
+https://fred.stlouisfed.org/series/FEDFUNDS
+U.S. Federal funds effective rate
