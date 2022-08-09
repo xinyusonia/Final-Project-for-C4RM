@@ -17,6 +17,8 @@ RedFlags <- function(df, target, category){
   return(newdf)
 }
 
+RedFlags(Inflation, 'OverallInflation', 'UnemploymentRate')
+
 RedFlagOverview <- function(df, target){
   newdf = data.frame(columnName = c(), columnValue = c(), maxTarget = c())
   for(name in names(df)[names(df) != target])
@@ -28,6 +30,7 @@ RedFlagOverview <- function(df, target){
   return(sorted)
 }
 
+RedFlagOverview(Inflation, 'OverallInflation')
 
 library('scales')
 
@@ -49,6 +52,9 @@ PortfolioPercentageChange = function(df){
   }
   return(df)
 }
+
+PortfolioPercentageChange(‘Inflation’)
+
 # All data in one plot
 mydata <- melt(Inflation,id="Date")
 colnames(mydata) <- c("Date","Inflation","value")
@@ -56,7 +62,8 @@ ggplot(data = mydata,aes(x=Date,
                          y=value,
                          group = Inflation,
                          color=Inflation,
-                         shape=Inflation))+geom_point()+geom_line()
+                         shape=Inflation))+geom_point()+geom_line()+ 
+  theme(axis.text.x = element_text(angle = 90))
 
 # Plot for Overall Inflation & Unemployment Rate
 Inflation2<-subset(Inflation, select=c("Date", "OverallInflation","UnemploymentRate"))
@@ -66,4 +73,16 @@ ggplot(data = mydata2,aes(x=Date,
                          y=value,
                          group = Inflation,
                          color=Inflation,
-                         shape=Inflation))+geom_point()+geom_line()
+                         shape=Inflation))+geom_point()+geom_line()+ 
+  theme(axis.text.x = element_text(angle = 90))
+
+# Plot for Overall Inflation & Federal Funds Effective Rate
+Inflation3<-subset(Inflation, select=c("Date", "OverallInflation","FederalFundsEffectiveRate"))
+mydata3 <- melt(Inflation3,id="Date")
+colnames(mydata3) <- c("Date","Inflation","value")
+ggplot(data = mydata3,aes(x=Date,
+                          y=value,
+                          group = Inflation,
+                          color=Inflation,
+                          shape=Inflation))+geom_point()+geom_line()+ 
+  theme(axis.text.x = element_text(angle = 90))
