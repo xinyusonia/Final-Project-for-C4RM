@@ -1,4 +1,7 @@
 Inflation <- read.csv("https://github.com/xinyusonia/Final-Project-for-C4RM/blob/main/InflationRate.csv")
+library(ggplot2)
+library(MASS)
+library(reshape2)
 
 RedFlags <- function(df, target, category){
   categories    = df[,category]
@@ -53,7 +56,7 @@ PortfolioPercentageChange = function(df){
   return(df)
 }
 
-PortfolioPercentageChange(‘Inflation’)
+PortfolioPercentageChange(Inflation)
 
 # All data in one plot
 mydata <- melt(Inflation,id="Date")
